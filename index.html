@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Meu Personal</title>
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#0b71ea"/>
+  <link rel="icon" href="/icons/icon-192x192.png" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div id="onboarding" class="onboarding" style="display:none;">
+    <img src="/assets/onboarding.jpg" alt="Bem-vindo" class="hero"/>
+    <h1>Meu Personal</h1>
+    <p>Teu shape sem gastar nada.</p>
+    <button id="startAppBtn" class="start-btn">Começar</button>
+  </div>
+
+  <div id="appShell" style="display:none;">
+    <header class="topbar">
+      <img src="/icons/icon-152x152.png" alt="MP" class="icon-preview"/>
+      <h1>Meu Personal</h1>
+      <p>Teu shape sem gastar nada.</p>
+    </header>
+
+    <main class="container" role="main">
+      <section class="card" id="form-section">
+        <h2>Crie seu treino</h2>
+        <form id="pref-form" onsubmit="return false;">
+          <label>Nome (opcional)
+            <input id="name" type="text" placeholder="Ex: Gustavo" />
+          </label>
+
+          <label>Objetivo
+            <select id="goal">
+              <option value="hypertrophy">Hipertrofia (ganho de massa)</option>
+              <option value="strength">Força</option>
+              <option value="endurance">Condicionamento</option>
+              <option value="fatloss">Perda de gordura</option>
+            </select>
+          </label>
+
+          <label>Nível
+            <select id="level">
+              <option value="beginner">Iniciante</option>
+              <option value="intermediate">Intermediário</option>
+              <option value="advanced">Avançado</option>
+            </select>
+          </label>
+
+          <label>Dias por semana
+            <input id="days" type="number" min="1" max="6" value="3" />
+          </label>
+
+          <div class="actions">
+            <button id="generate" type="button">Gerar Treino</button>
+            <button id="saveProfile" type="button" class="small-btn">Salvar Perfil</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card" id="plan-section" aria-live="polite">
+        <h2>Treino gerado</h2>
+        <div id="plan-output">
+          <p>Nenhum treino gerado ainda.</p>
+        </div>
+
+        <div class="plan-actions">
+          <button id="todayBtn" class="small-btn">Ver treino de hoje</button>
+          <button id="exportTxt" class="small-btn">Exportar texto</button>
+          <button id="clearHistory" class="small-btn">Limpar histórico</button>
+        </div>
+
+        <hr/>
+
+        <div>
+          <h3>Temporizador de descanso</h3>
+          <div class="select-inline">
+            <label for="restSelect">Escolha descanso:</label>
+            <select id="restSelect" style="padding:8px;border-radius:8px;margin-left:6px;">
+              <option value="90">90 segundos</option>
+              <option value="120">120 segundos</option>
+            </select>
+            <button id="startTimerBtn" class="small-btn" style="margin-left:8px;">Iniciar descanso</button>
+            <div id="timerDisplay" style="margin-left:12px;font-weight:700">01:30</div>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="card" id="history-section">
+        <h2>Histórico</h2>
+        <div id="historyList"><small>Sem registros.</small></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <small>Uso experimental — isto não substitui a orientação de um profissional de educação física.</small>
+    </footer>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
